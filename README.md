@@ -18,10 +18,13 @@ CHED Services
 <a name="Description"></a>
 ## Description [&uarr;](#TOC) ##
 
+Initial release. Powershell wrappers and Pester tests to come.
 
 ~~~
 . .\Get-NmiCheckDigit.ps1; Get-NmiCheckDigit.ps1 -nmi "QAAAVZZZZZ"
 ~~~
 
-
+~~~
+. .\Get-Nmi11.ps1;Get-Nmi11 -nmi "QAAAVZZZZZ"
+~~~
 

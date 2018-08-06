@@ -1,4 +1,23 @@
-function Get-NmiCheckDigit
+<#
+  .SYNOPSIS
+    Returns  a NMI with Check Digit
+  
+  .DESCRIPTION
+    Returns  a NMI with Check Digit
+  
+  .PARAMETER Nmi
+    A NMI
+  
+  .EXAMPLE
+    		PS C:\> Get-Nmi11 -Nmi "QAAAVZZZZZ"
+  
+  .EXAMPLE
+    		PS C:\> Get-Nmi11 -Nmi "QAAAVZZZZZ3"  
+
+  .NOTES
+    Additional information about the function.
+#>
+function Get-Nmi11
 {
   [CmdletBinding()]
   param
@@ -22,6 +41,6 @@ function Get-NmiCheckDigit
   $CSharp = Get-Content -Path $(Join-Path $PSScriptRoot "CalculateChecksum.cs") | Out-String
   
   Add-Type -TypeDefinition $CSharp -Language CSharp -Debug:$false
-  $rv = [Ruusty.Nmi_Luhn10]::NmiCheckSum($Nmi)
+  $rv = [Ruusty.Nmi_Luhn10]::NmiWithChecksum($Nmi)
   Write-Host $rv
 }
